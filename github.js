@@ -145,6 +145,7 @@
 					copyStr += `${node.textContent}`;
 				}
 			});
+			copyStr = copyStr.slice(0, copyStr.length - 4);
 			fakeSelect(copyBtn, copyStr);
 		};
 	});
