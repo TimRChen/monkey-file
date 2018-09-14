@@ -5,8 +5,9 @@ tampermonkey script.
 
 [点击这里查看代码](./github.js)
 
--   全局青色: darkcyan
--   背景灰色，减少对眼镜的刺激
+-   全局黑色
+-   全局Toast
+-   代码块复制按钮，一键复制代码
 -   智能返回顶部按钮，可根据页面高度显隐
 
 ## Teambition自用脚本
