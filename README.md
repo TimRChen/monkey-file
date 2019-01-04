@@ -15,9 +15,10 @@ tampermonkey script.
 [点击这里查看代码](./teambition.js)
 
 -   重定向teamibtion任意页面至目标页
--   跳转至目标任务卡片栏
+-   跳转至目标任务看板
+-   可直接定义需要跳转的任务看板标题`new`
 
 |变量|值|
 |---|---|
 |targetURL|目标任务卡片页URL|
-|dataId|data-id 填写你想定位的任务卡片栏的 data-id|
+|columnTitle|columnTitle 填写你想定位的任务看板标题|
