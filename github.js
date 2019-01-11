@@ -9,12 +9,7 @@
 // ==/UserScript==
 
 (function() {
-    'use strict';
-
-	var welcome = setTimeout(() => {
-		showToast('欢迎使用由TimRChen开发的github脚本工具，开心每一天.', '30%');
-		clearTimeout(welcome);
-	}, 1000);
+	'use strict';
 
 	var $ = document.querySelector.bind(document);
 	var $All = document.querySelectorAll.bind(document);
@@ -22,19 +17,17 @@
 
 	var topBtn = document.createElement('div');
 	$('body').appendChild(topBtn);
-	topBtn.innerHTML = '△';
+	topBtn.innerHTML = '🔝';
 	topBtn.className = 'top-btn-timrchen';
 
 	var btnStyle = {
 		opacity: '0',
 		width: '45px',
 		color: '#fff',
-		height: '35px',
+		height: '45px',
 		fontSize: '22px',
 		transition: 'all .5s ease-in-out',
-		backgroundColor: 'darkcyan',
-		borderRadius: '4px',
-		lineHeight: '35px',
+		lineHeight: '45px',
 		textAlign: 'center',
 		position: 'fixed',
 		cursor: 'pointer',
@@ -47,8 +40,8 @@
 		event.preventDefault();
 		var scrollDuration = 2000;
         var scrollHeight = window.scrollY,
-              scrollStep = Math.PI / ( scrollDuration / 15 ),
-              cosParameter = scrollHeight / 2;
+						scrollStep = Math.PI / ( scrollDuration / 15 ),
+						cosParameter = scrollHeight / 2;
         var scrollCount = 0,
             scrollMargin,
             scrollInterval = setInterval(function () {
@@ -62,17 +55,17 @@
             }, 1);
 	};
 
+	topBtn.addEventListener('mousemove', function (event) {
+		event.target.style.fontSize = '50px';
+	});
+
+	topBtn.addEventListener('mouseleave', function (event) {
+		event.target.style.fontSize = '22px';
+	});
+
 	topBtn.onselectstart = function () {
 		return false;
 	};
-
-	topBtn.addEventListener('mousedown', function () {
-		topBtn.style.backgroundColor = 'darkred';
-	});
-
-	topBtn.addEventListener('mouseup', function () {
-		topBtn.style.backgroundColor = 'black';
-	});
 
 	// 监听滚动事件，返回顶部按钮显隐
 	window.onscroll = function (e) {
@@ -80,8 +73,6 @@
 		var pageOffsetTop = window.scrollY;
 		if (pageOffsetTop >= innerHeight) {
 			topBtn.style.opacity = '1';
-			topBtn.style.backgroundColor = 'black';
-			topBtn.style.color = '#fff';
 		} else {
 			topBtn.style.opacity = '0';
 		}
@@ -93,7 +84,6 @@
 		var detectTimer = setInterval(function () {
 			if (pageOffsetTop === window.scrollY) {
 				topBtn.style.backgroundColor = 'transparent';
-				topBtn.style.color = 'black';
 			} else {
 				clearInterval(detectTimer);
 			}
@@ -172,17 +162,17 @@
 		container.appendChild(fakeElem);
 
 		var isReadOnly = fakeElem.hasAttribute('readonly');
-        if (!isReadOnly) {
-            fakeElem.setAttribute('readonly', '');
-        }
+		if (!isReadOnly) {
+			fakeElem.setAttribute('readonly', '');
+		}
 
 		fakeElem.innerHTML = str;
 
 		fakeElem.select();
 		fakeElem.setSelectionRange(0, fakeElem.value.length);
 
-        if (!isReadOnly) {
-            fakeElem.removeAttribute('readonly');
+		if (!isReadOnly) {
+			fakeElem.removeAttribute('readonly');
 		}
 		copyText(container, fakeElem);
 	};
@@ -193,15 +183,15 @@
 	 * @argument childNode - 子节点
 	 */
 	var copyText = function (parentNode, childNode) {
-        try {
+		try {
 			document.execCommand('copy', false, null);
 			parentNode.removeChild(childNode);
 			showToast('复制成功', '100px');
-        } catch (err) {
-            console.error(err);
-        }
+		} catch (err) {
+			console.error(err);
+		}
 	};
-	
+
 	/**
 	 * toast 函数
 	 * @argument msg - toast内容
@@ -212,9 +202,9 @@
 		toast.className = 'toast-show-by-timrchen';
 		var toastStyle = {
 			width,
+			color: '#fff',
 			height: '30px',
 			borderRadius: '4px',
-			color: 'rgb(0, 238, 0)',
 			backgroundColor: 'rgba(0, 0, 0, 1)',
 			textAlign: 'center',
 			lineHeight: '30px',
@@ -233,6 +223,5 @@
 			clearTimeout(destroyTimer);
 		}, 1000);
 	};
-
 
 })();
